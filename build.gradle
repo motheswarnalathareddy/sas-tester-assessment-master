@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+}
+
+group 'sas-tester-assessment'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+   // testCompile group: 'junit', name: 'junit', version: '4.12'
+    def cucumberVersion = '2.4.0'
+//    testCompile group: 'io.cucumber', name: 'cucumber-java', version: "${cucumberVersion}"
+//    testCompile group: 'io.cucumber', name: 'cucumber-junit', version: "${cucumberVersion}"
+//    testCompile group: 'io.cucumber', name: 'cucumber-core', version: "${cucumberVersion}"
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.1'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
+    testImplementation group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
+
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
+    implementation 'io.cucumber:cucumber-java:7.5.0'
+    // https://mvnrepository.com/artifact/junit/junit
+   testImplementation 'junit:junit:4.13.1'
+   // https://mvnrepository.com/artifact/io.cucumber/cucumber-core
+    implementation 'io.cucumber:cucumber-core:7.5.0'
+   // https://mvnrepository.com/artifact/io.cucumber/cucumber-junit
+    testImplementation 'io.cucumber:cucumber-junit:7.5.0'
+
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
